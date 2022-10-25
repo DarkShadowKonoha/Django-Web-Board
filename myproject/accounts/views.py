@@ -1,7 +1,7 @@
 from django.contrib.auth import login as auth_login
 from django.shortcuts import render, redirect
 
-from .form import SignUpForm
+from .forms import SignUpForm
 
 def signup(request):
     if request.method == 'POST':
