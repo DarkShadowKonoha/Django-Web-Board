@@ -1,14 +1,12 @@
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 from django.contrib.auth.models import User
 from django.core import mail
 from django.urls import resolve, reverse
 from django.test import TestCase
-from django.contrib.auth.tokens import default_token_generator
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
-from django.contrib.auth.forms import SetPasswordForm
-
 
 
 class PasswordResetTests(TestCase):
@@ -72,6 +70,7 @@ class InvalidPasswordResetTests(TestCase):
     def test_no_reset_email_sent(self):
         self.assertEqual(0, len(mail.outbox))
 
+
 class PasswordResetDoneTests(TestCase):
     def setUp(self):
         url = reverse('password_reset_done')
@@ -94,7 +93,7 @@ class PasswordResetConfirmTests(TestCase):
         based on how django creates the token internally:
         https://github.com/django/django/blob/1.11.5/django/contrib/auth/forms.py#L280
         '''
-        self.uid = urlsafe_base64_encode(force_bytes(user.pk)).decode()
+        self.uid = urlsafe_base64_encode(force_bytes(user.pk))
         self.token = default_token_generator.make_token(user)
 
         url = reverse('password_reset_confirm', kwargs={'uidb64': self.uid, 'token': self.token})
@@ -125,7 +124,7 @@ class PasswordResetConfirmTests(TestCase):
 class InvalidPasswordResetConfirmTests(TestCase):
     def setUp(self):
         user = User.objects.create_user(username='john', email='john@doe.com', password='123abcdef')
-        uid = urlsafe_base64_encode(force_bytes(user.pk)).decode()
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = default_token_generator.make_token(user)
 
         '''

@@ -7,7 +7,7 @@ body{
 }
 
 .logo a{
-    color: rgba(0,0,0,.9)
+    color: rgb(0,0,255);
 }
 
 .logo a:hover,
