@@ -1,6 +1,6 @@
 # A Complete Beginner's Guide to Django
 
-[![Python Version](https://img.shields.io/badge/python-3.6-brightgreen.svg)](https://python.org)
+[![Python Version](https://img.shields.io/badge/python-3.8.0-brightgreen.svg)](https://python.org)
 [![Django Version](https://img.shields.io/badge/django-4.1.2-brightgreen.svg)](https://djangoproject.com)
 
 
@@ -38,12 +38,3 @@ python manage.py runserver
 
 The project will be available at **127.0.0.1:8000**.
 
-
-## License
-
-The source code is released under the [MIT License](https://github.com/sibtc/django-beginners-guide/blob/master/LICENSE).
-
-[![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/3.0/)
-
-The tutorials, documentations, comics are licensed under the
-[Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](https://creativecommons.org/licenses/by-nc-sa/3.0/).
